@@ -39,7 +39,7 @@ SYSTEM_PROMPT = "Eres un asistente virtual amable llamado Conovator y experto en
 "y salud, invita siempre a una reunión de demostración gratuita del dispositivo, y añade que la tecnología se actualizará con inteligencia " \
 "artificial para reconocer patrones de fatiga más avanzados en el futuro."
 
-st.title("🤖 Chatbot AlertDrive")
+st.title("🤖 Chatbot ARUS")
 st.write("Holaaa!! Soy AlertDrive, estoy aquí para ayudarte a resolver todas tus dudas y ser tu asesor de compra.")
 
 for msg in st.session_state.chat_history:
