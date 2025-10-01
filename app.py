@@ -56,7 +56,7 @@ SYSTEM_PROMPT = "Eres un asistente virtual amable llamado ARUS y experto en vent
 
 
 st.title("🤖 Chatbot ARUS")
-st.write("Holaaa!! Soy AlertDrive, estoy aquí para ayudarte a resolver todas tus dudas y ser tu asesor de compra.")
+st.write("Holaaa!! Soy ARUS, estoy aquí para ayudarte a resolver todas tus dudas y ser tu asesor de compra.")
 
 for msg in st.session_state.chat_history:
     with st.chat_message(msg["role"]):
@@ -95,6 +95,7 @@ if user_input:
 
     # Guardar en historial
     st.session_state.chat_history.append({"role": "assistant", "content": respuesta_texto})
+
 
 
 
