@@ -7,10 +7,15 @@ st.set_page_config(page_title="Chatbot con IA", page_icon="💬", layout="center
 
 
 # Cargar la API key de forma segura
-API_KEY = "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"
+# Cargar la API key de forma segura
+load_dotenv()  # No falla si .env no existe
+API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+if not API_KEY:
+    st.error("Falta GROQ_API_KEY en .env o en st.secrets.")
+    st.stop()
 
-os.environ["GROQ_API_KEY"] = API_KEY
-client = Groq()  # Cliente para invocar la API de Groq
+client = Groq(api_key=API_KEY)
+  # Cliente para invocar la API de Groq
 
 # Inicializar el historial de chat en la sesión
 if "chat_history" not in st.session_state:
@@ -25,7 +30,10 @@ SYSTEM_PROMPT = "Eres un asistente virtual amable llamado Conovator y experto en
 "- Componentes: Cámara, raspberry pi, carcasa para ubicar en los buses, aplicación de telemetría que " \
 " permite que los buses se conecten a la central de la empresa para monitoreo en tiempo real y control de las alertas" \
 "- planes: 1ro: suscripción de 5 años y actualizaciones constantes totalmente gratuitas, 2do: suscripción de 3 años y" \
-"mantenimientos preventivos cada 3 meses."
+"mantenimientos preventivos cada 3 meses." \
+"Explica al cliente cómo el dispositivo detecta la somnolencia en carreteras de madrugada y por qué resulta más seguro y" \
+" económico que contratar dos choferes por turno, destacando su sistema basado en PERCLOS, que mide el porcentaje de cierre " \
+"en los parpadeos y ha sido validado por la Federal Highway Administration (FHWA) y gestionado por la National Highway Traffic Safety Administration (NHTSA) como el indicador más confiable para detectar somnolencia en conductores; enfatiza cómo su implementación masiva puede salvar vidas y reducir accidentes en las carreteras, menciona que el dispositivo cumple con las regulaciones peruanas de transporte y salud, invita siempre a una reunión de demostración gratuita del dispositivo, y añade que la tecnología se actualizará con inteligencia artificial para reconocer patrones de fatiga más avanzados en el futuro."
 
 st.title("🤖 Chatbot Conovator")
 st.write("Holaaa!! Soy conovator, estoy aquí para ayudarte a resolver todas tus dudas y ser tu asesor de compra.")
