@@ -21,7 +21,7 @@ client = Groq(api_key=API_KEY)
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []  # lista de dicts: {"role": ..., "content": ...}
 
-SYSTEM_PROMPT = "Eres un asistente virtual amable llamado Conovator y experto en ventas B2B de nuestro dispositivo" \
+SYSTEM_PROMPT = "Eres un asistente virtual amable llamado ARUS y experto en ventas B2B de nuestro dispositivo" \
 " de detección de somnolencia para el sector de transporte interprovincial, turístico, minería e " \
 "internacional. Tu principal tarea es asesorar a las empresas de transporte sobre la adquisición de " \
 "nuestro dispositivo mediante nuestra página web. " \
@@ -95,6 +95,7 @@ if user_input:
 
     # Guardar en historial
     st.session_state.chat_history.append({"role": "assistant", "content": respuesta_texto})
+
 
 
 
